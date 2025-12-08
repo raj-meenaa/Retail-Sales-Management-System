@@ -1,0 +1,28 @@
+{
+  "name": "sales-management-backend",
+  "version": "1.0.0",
+  "description": "Backend for Sales Management System",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "create-tables": "node scripts/createTables.js",
+    "import": "node scripts/importData.js"
+  },
+  "keywords": [
+    "sales",
+    "management",
+    "api"
+  ],
+  "author": "Raj Meena",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
+    "pg": "^8.16.3"
+  }
+}
