@@ -1,103 +1,95 @@
-# Sales Management System
+# Retail Sales Management System
 
 ## Overview
-A full-stack Retail Sales Management System with advanced search, multi-select filtering, sorting, and pagination capabilities. Built with React, Node.js, Express, and PostgreSQL to efficiently handle large-scale sales data with clean architecture and professional execution.
+A full-stack Retail Sales Management System built to efficiently manage and analyze large-scale sales data. The application features advanced search capabilities, multi-select filtering, dynamic sorting, and server-side pagination for optimal performance. Built with modern technologies including React, Node.js, Express, and PostgreSQL, the system provides a professional and responsive user interface with clean architecture and scalable backend design.
+
+## Video Demo :- 
+https://drive.google.com/file/d/1bZ4q-YCGLNpRfapovLbhl2W6-xUUGuHf/view?usp=sharing
 
 ## Tech Stack
 
 **Frontend:**
-- React 18 with Vite
-- Tailwind CSS
-- Axios for HTTP requests
+- React 19 with Vite
+- Tailwind CSS 4
+- Axios
 - React Icons
 
 **Backend:**
-- Node.js 18+
-- Express.js
-- PostgreSQL 14+
+- Node.js with Express.js
+- PostgreSQL
 - CSV Parser
+- Dotenv
 
 **Deployment:**
 - Frontend: Vercel
-- Backend: Railway
+- Backend: Render
 - Database: Railway PostgreSQL
 
 ## Search Implementation Summary
 
-Implements debounced full-text search with 500ms delay for optimal performance. Uses PostgreSQL ILIKE operator for case-insensitive matching on customer_name and phone_number fields. Search queries combine with OR logic to match either field and work seamlessly alongside all active filters and sorting options through dynamic query building.
+Debounced search with 500ms delay using PostgreSQL ILIKE operator for case-insensitive matching across customer_name and phone_number fields. Search terms combine with OR logic, allowing matches from either field while seamlessly integrating with active filters and sorting through dynamic query construction.
 
 ## Filter Implementation Summary
 
-Multi-select filters implemented using PostgreSQL's ANY operator for categorical fields including customer regions, gender, product categories, and payment methods. Tag filtering leverages PostgreSQL array overlap operator (&&) for efficient array-based matching. Range filters for age and dates use >= and <= operators with proper NULL handling. All filters combine with AND logic through a QueryBuilder utility that constructs dynamic WHERE clauses based on active filters.
+Multi-select filters use PostgreSQL's ANY operator for categorical fields (regions, gender, categories, payment methods). Tag filtering leverages array overlap operator (&&) for efficient array-based matching. Range filters for age and dates use comparison operators with NULL handling. All filters combine with AND logic via QueryBuilder utility for dynamic WHERE clause construction.
 
 ## Sorting Implementation Summary
 
-Database-level sorting implemented with ORDER BY clause for optimal performance. Three sorting options available: Date (DESC default for newest first, ASC for oldest), Quantity (DESC/ASC for high to low or low to high), and Customer Name (ASC/DESC for alphabetical sorting). Sorting maintains all active filters and search terms through query parameter preservation. Indexed columns ensure fast sorting even with large datasets.
+Database-level sorting using ORDER BY clause with three options: Date (DESC/ASC), Quantity (DESC/ASC), and Customer Name (ASC/DESC). Indexed columns ensure fast sorting performance. All active filters and search terms are preserved during sort operations through query parameter management.
 
 ## Pagination Implementation Summary
 
-Server-side pagination using PostgreSQL LIMIT/OFFSET approach with 10 items per page. Separate COUNT query returns total records for calculating page numbers. Frontend displays current item range, provides Next/Previous navigation, and supports direct page number selection. All filters, search terms, and sort options are preserved across page changes through state management, ensuring consistent user experience.
+Server-side pagination using PostgreSQL LIMIT/OFFSET with 10 items per page. Separate COUNT query calculates total records for pagination controls. Frontend displays current range, Next/Previous navigation, and direct page selection while preserving all filters, search terms, and sorting across page changes.
 
 ## Setup Instructions
 
 ### Prerequisites
-- Node.js 18 or higher
-- PostgreSQL 14 or higher
-- npm or yarn package manager
+- Node.js 18+
+- PostgreSQL 14+
+- Railway CLI (for deployment)
 
 ### Backend Setup
 
 ```bash
 # Navigate to backend directory
-cd backend
+cd Backend
 
 # Install dependencies
 npm install
 
-# Create PostgreSQL database
-createdb sales_db
-
 # Configure environment variables
-cp .env.example .env
-# Edit .env with your database credentials
+# Create .env file with:
+# DATABASE_URL=your_postgresql_connection_string
+# PORT=3001
+# NODE_ENV=development
 
 # Create database tables
 npm run create-tables
 
-# Import CSV data
+# Import CSV data (optional)
 npm run import path/to/sales_data.csv
 
 # Start development server
 npm run dev
 ```
 
-Backend will run on http://localhost:5000
+Backend runs on http://localhost:3001
 
 ### Frontend Setup
 
 ```bash
 # Navigate to frontend directory
-cd frontend
+cd Frontend
 
 # Install dependencies
 npm install
 
 # Configure environment variables
-echo "VITE_API_URL=http://localhost:3001/api" > .env
+# Create .env file with:
+# VITE_API_URL=http://localhost:3001/api
 
 # Start development server
 npm run dev
 ```
 
-Frontend will run on http://localhost:5173
-
-### Access Application
-
-Open your browser and navigate to http://localhost:5173 to use the application.
-
----
-
-## Live Demo
-
-- **Application URL:** [Your deployed Vercel URL]
-- **GitHub Repository:** [Your GitHub repository URL]
+Frontend runs on http://localhost:5173
