@@ -3,6 +3,9 @@
 ## Overview
 A full-stack Retail Sales Management System built to efficiently manage and analyze large-scale sales data. The application features advanced search capabilities, multi-select filtering, dynamic sorting, and server-side pagination for optimal performance. Built with modern technologies including React, Node.js, Express, and PostgreSQL, the system provides a professional and responsive user interface with clean architecture and scalable backend design.
 
+## Live Link :- 
+[https://drive.google.com/file/d/1bZ4q-YCGLNpRfapovLbhl2W6-xUUGuHf/view?usp=sharing
+](https://retail-sales-management-system-woad.vercel.app/)
 ## Video Demo :- 
 https://drive.google.com/file/d/1bZ4q-YCGLNpRfapovLbhl2W6-xUUGuHf/view?usp=sharing
 
